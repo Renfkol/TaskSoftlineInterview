@@ -1,0 +1,64 @@
+﻿@model IEnumerable<TaskSoftline.Models.ResultCart>
+
+@{
+    ViewBag.Title = "Обозреватель";
+}
+
+<h2>ProjectView</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProviderName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DLData)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+
+        @if (item.ProviderName == "Нет продавцов")
+         {
+            <td style="color:#9f0000">
+                @Html.DisplayFor(modelItem => item.ProviderName)
+            </td>
+         }
+         else
+         {
+            <td style="color:#1c8901">
+                @Html.DisplayFor(modelItem => item.ProviderName)
+            </td>
+         }
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalCost)
+        </td>
+        @if(item.DLData!=DateTime.MinValue)
+        {
+            <td style="color:#1c8901">
+                @Html.DisplayFor(modelItem => item.DLData)
+            </td>
+        }
+        
+    </tr>
+}
+
+</table>
